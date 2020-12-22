@@ -8,22 +8,32 @@
     <title>Blog</title>
 </head>
 <body>
+    <!--Affichage de la liste des  articles sous forme de cards avec bootsrap-->
     <div class="container">
         <h1 class="mb-4">Blog Articles</h1>
         <a href="/articles/nouveau" class="btn btn-success">Nouvel Article</a>
-
+        
+        <!--Parcourir la liste des articles et les afficher sous forme de cards-->
         <% articles.forEach(article => { %>
             <div class="card mt-4">
                 <div class="card-body">
-                    <h4 class="card-titre">
+                    <h4 class="card-title">
                         <%= article.titre %>
                     </h4>
-                    <div class="card-soustitre text-muted mb-2">
-                        <%= article.dateCreation.toLocaleDateString() %>
+                    <div class="card-subtitle text-muted mb-2">
+                        <!--la méthode toLocaledate nous affiche la date sous format (local=>français)-->
+                        <%= article.dateCreation.toLocaleDateString() %> 
                     </div>
-                    <div class="card-texte mb-2">
+                    <div class="card-text mb-2">
                         <%= article.description %>
+                        
                     </div>
+                    <a href="articles/<%= article.slug %>" class="btn btn-primary">Details
+                    </a>
+                    <form action="/articles/<%= article.id %>?_method=DELETE"
+                     method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
 
                 </div>                
             </div>

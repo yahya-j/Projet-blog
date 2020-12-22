@@ -1,15 +1,24 @@
+<!--Création du formulaire pour la saisie des champs par librairie "EJS"-->
+<!--Cette librairie fait appel à bootsrap exple: class="form-group"-->
+
+<!--Champ "titre"-->
 <div class="form-group">
     <label for="titre">Titre</label>
     <input required value="<%= article.titre %>"
     type="text" name="titre" id="titre" 
     class="form-control">
 </div>
+
+<!--Champ "description sous forme d'un "textArea"-->
 <div class="form-group">
     <label for="description">Description</label>
     <textarea name="description" id="description" class="form-control">
     <%= article.description %>
     </textarea>
 </div>
+<!--Le Champ "dateCreation est insérer authomatiquement dans la BDD sans le saisir"-->
+
+<!--Le Champ "markdown" sous forme de textArea-->
 <div class="form-group">
     <label for="markdown">Markdown</label>
     <textarea required name="markdown" id="markdown" class="form-control">
@@ -17,5 +26,6 @@
     </textarea>
 </div>
 
+<!--Création de 2 boutons "gris" et "bleu" pour quitter et valider-->
 <a href="/" class="btn btn-secondary">Quitter</a>
 <button type="submit" class="btn btn-primary">Valider</button>

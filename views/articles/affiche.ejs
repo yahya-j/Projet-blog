@@ -8,15 +8,23 @@
     <title>Blog</title>
 </head>
 <body>
-    <!--Appel de la création d'un nouveau article par le biais du formulaire "_form_champs"-->
+    <!--Affichage de l'article sous forme de Card-->
     <div class="container">
         <div class="container">
-            <h1 class="mb-4">Nouvel Article</h1>  
+            <h1 class="mb-1"><%= article.titre%></h1>  
+            <div class="text-muted mb-2">
+                <%= article.dateCreation.toLocaleDateString() %>
+            </div>
+            <a href="/" class="btn btn-secondary">
+            Tous les Articles</a>
+            <a href="/articles/editer/<%= article.id %>" 
+            class="btn btn-info">Edition</a>
+            <div>
+                <%= article.markdown %>
+            </div>
 
-            <form action="/articles" method="POST">
-                <!--Appel au formulaire-->
-                <%- include('_form_champs') %>
-             </form>      
+
+                
          </div>        
     </div>
 </body>
