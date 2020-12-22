@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blog</title>
+    <title>Blog Personnel</title>
 </head>
 <body>
     <!--Affichage de la liste des  articles sous forme de cards avec bootsrap-->
@@ -29,6 +29,8 @@
                         
                     </div>
                     <a href="articles/<%= article.slug %>" class="btn btn-primary">Details
+                    </a>
+                    <a href="articles/edition/<%= article.id %>" class="btn btn-info">Editer
                     </a>
                     <form action="/articles/<%= article.id %>?_method=DELETE"
                      method="POST" class="d-inline">

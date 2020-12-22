@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 const marked = require ('marked')
 const slugify = require ('slugify')
+const createDomPurify = require ('dompurify')
+const { JSDOM } = require('jsdom') 
+const dompurify = createDomPurify(new JSDOM().window)
 
 //Création du schema de l'artice dans la BDD mongoDB
 const articleSchema = new mongoose.Schema({
@@ -23,6 +26,11 @@ const articleSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },
+    //sanitizedHtml: utilisé pour nettoyer le code et le rendre plus secure.
+    sanitizedHtml: {
+        type: String,
+        required: true
     }
 })
 
@@ -34,6 +42,12 @@ articleSchema.pre('validate', function(next) {
         this.slug = slugify(this.titre, { 
             lower: true,
             strict: true })
+    }
+
+    if(this.markdown) {
+        //Cette ligne permet de protéger la partie markdown contre les injections et attaques xss
+        this.sanitizedHtml = dompurify.sanitize(marked(this.markdown))
+
     }
 
     next()
