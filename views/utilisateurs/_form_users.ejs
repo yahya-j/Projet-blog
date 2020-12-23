@@ -1,0 +1,22 @@
+<!--Création du formulaire pour la saisie des champs par librairie "EJS"-->
+<!--Cette librairie fait appel à bootsrap exple: class="form-group"-->
+
+<!--Champ "titre"-->
+<div class="form-group">
+    <label for="identifiant">Identifiant</label>
+    <input required value="<%= user.identifiant %>"
+    type="text" name="identifiant" id="identifiant" 
+    class="form-control">
+</div>
+
+<!--Champ "description sous forme d'un "textArea"-->
+<div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" class="form-control">
+    <%= user.password %>
+    </input>
+</div>
+
+
+<a href="/" class="btn btn-secondary">Quitter</a>
+<button type="submit" class="btn btn-primary">Valider</button>

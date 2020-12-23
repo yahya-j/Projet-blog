@@ -8,11 +8,19 @@
     <title>Blog Personnel</title>
 </head>
 <body>
+    
     <!--Affichage de la liste des  articles sous forme de cards avec bootsrap-->
-    <div class="container">
+    <div class="container" >
+           
         <h1 class="mb-4">Blog Articles</h1>
-        <a href="/articles/nouveau" class="btn btn-success">Nouvel Article</a>
         
+        <a href="/articles/nouveau" class="btn btn-success">Nouvel Article</a>
+       
+        <div >
+            <h1>Total Articles</h1>
+            <label id="compteur"></label>              
+        </div> 
+                       
         <!--Parcourir la liste des articles et les afficher sous forme de cards-->
         <% articles.forEach(article => { %>
             <div class="card mt-4">
@@ -43,6 +51,7 @@
         <% }) %>
         
     </div>
+  
 </body>
 </html>
 

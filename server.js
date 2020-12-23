@@ -5,11 +5,20 @@ const articleRouter = require('./routes/articles')
 const methodOverride = require('method-override')
 const app = express()
 
-mongoose.connect('mongodb://localhost/blog', { 
+
+var db = mongoose.connect('mongodb://localhost/blog', { 
     useNewUrlParser: true, useUnifiedTopology: true,
     useCreateIndex: true
 })
 
+//affiche la somme des articles de la BDD dans la console
+Article.countDocuments({}, function(err, docCount) {
+    if (err) { return handleError(err) } 
+    console.log("docCount: " + docCount)
+   
+})
+
+ 
 //appel de la librairie EJS pour la partie affichage côté serveur
 app.set('view engine', 'ejs')
 
@@ -18,7 +27,6 @@ app.use(express.urlencoded({
 }))
 
 app.use(methodOverride('_method'))
-
 
 app.get('/', async (req, res) => {
   const articles = await Article.find().sort({ dateCreation: 'desc'})
